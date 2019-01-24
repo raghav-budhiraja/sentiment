@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/bayes.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">app/</a> bayes.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">88.97% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>129/145</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">79.41% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>27/34</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">92% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>23/25</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">89.93% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>125/139</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201</td><td class="line-coverage quiet"><span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1056564×</span>
+<span class="cline-any cline-yes">1056564×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1814826×</span>
+<span class="cline-any cline-yes">110037×</span>
+<span class="cline-any cline-yes">1704789×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">860422×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">46410×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">693522×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">214472×</span>
+<span class="cline-any cline-yes">214472×</span>
+<span class="cline-any cline-yes">214472×</span>
+<span class="cline-any cline-yes">428938×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">27186×</span>
+<span class="cline-any cline-yes">27186×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">27186×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">345736×</span>
+<span class="cline-any cline-yes">345736×</span>
+<span class="cline-any cline-yes">345736×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-yes">345736×</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">178836×</span>
+<span class="cline-any cline-yes">178836×</span>
+<span class="cline-any cline-yes">178836×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">19224×</span>
+<span class="cline-any cline-yes">19224×</span>
+<span class="cline-any cline-yes">19224×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">19224×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">1056558×</span>
+<span class="cline-any cline-yes">1056558×</span>
+<span class="cline-any cline-yes">1056558×</span>
+<span class="cline-any cline-yes">1056558×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">514686×</span>
+<span class="cline-any cline-yes">514686×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">27186×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">31992×</span>
+<span class="cline-any cline-yes">31992×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">27186×</span>
+<span class="cline-any cline-yes">27186×</span>
+<span class="cline-any cline-yes">27186×</span>
+<span class="cline-any cline-yes">27186×</span>
+<span class="cline-any cline-yes">514686×</span>
+<span class="cline-any cline-yes">27186×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">178836×</span>
+<span class="cline-any cline-yes">178836×</span>
+<span class="cline-any cline-yes">178836×</span>
+<span class="cline-any cline-yes">5968×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-yes">172868×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-yes">9612×</span>
+<span class="cline-any cline-yes">7221×</span>
+<span class="cline-any cline-yes">7221×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4806×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var Storage = (function(Storage) {
+&nbsp;
+	Storage._data = {};
+	Storage.setItem = function(k,v) {
+		Storage._data[k] = v;
+		return Storage;
+	};
+	Storage.getItem = function(k) {
+		if (typeof Storage._data[k] === 'undefined')
+			return null;
+		return Storage._data[k];
+	};
+&nbsp;
+	return Storage;
+})(Storage || <span class="branch-1 cbranch-no" title="branch not covered" >{})</span>;
+&nbsp;
+var Bayes = (function (Bayes) {
+&nbsp;
+	Bayes.debug = true;
+    Array.prototype.unique = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var u = {}, a = [];</span>
+<span class="cstat-no" title="statement not covered" >        for (var i = 0, l = this.length; i &lt; l; ++i) {</span>
+<span class="cstat-no" title="statement not covered" >            if (u.hasOwnProperty(this[i])) {</span>
+<span class="cstat-no" title="statement not covered" >                continue;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            a.push(this[i]);</span>
+<span class="cstat-no" title="statement not covered" >            u[this[i]] = 1;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return a;</span>
+    }
+    var stemKey = function (stem, label) {
+        return '_Bayes::stem:' + stem + '::label:' + label;
+    };
+    var docCountKey = function (label) {
+        return '_Bayes::docCount:' + label;
+    };
+    var stemCountKey = function (stem) {
+        return '_Bayes::stemCount:' + stem;
+    };
+&nbsp;
+    var log = function (text) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (Bayes.debug) <span class="cstat-no" title="statement not covered" >console.log(text);</span>
+    };
+&nbsp;
+    var getLabels = function () {
+        var labels = Bayes.storage.getItem('_Bayes::registeredLabels');
+        if (!labels) labels = '';
+        return labels.split(',').filter(function (a) {
+            return a.length;
+        });
+    };
+&nbsp;
+    var registerLabel = function (label) {
+        var labels = getLabels();
+        if (labels.indexOf(label) === -1) {
+            labels.push(label);
+            Bayes.storage.setItem('_Bayes::registeredLabels', labels.join(','));
+        }
+        return true;
+    };
+&nbsp;
+    var stemLabelCount = function (stem, label) {
+        var count = parseInt(Bayes.storage.getItem(stemKey(stem, label)));
+        if (!count) count = 0;
+        return count;
+    };
+    var stemInverseLabelCount = function (stem, label) {
+        var labels = getLabels();
+        var total = 0;
+        for (var i = 0, length = labels.length; i &lt; length; i++) {
+            if (labels[i] === label) 
+                continue;
+            total += parseInt(stemLabelCount(stem, labels[i]));
+        }
+        return total;
+    };
+&nbsp;
+    var stemTotalCount = function (stem) {
+        var count = parseInt(Bayes.storage.getItem(stemCountKey(stem)));
+        if (!count) count = 0;
+        return count;
+    };
+    var docCount = function (label) {
+        var count = parseInt(Bayes.storage.getItem(docCountKey(label)));
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!count) <span class="cstat-no" title="statement not covered" >count = 0;</span>
+        return count;
+    };
+    var docInverseCount = function (label) {
+        var labels = getLabels();
+        var total = 0;
+        for (var i = 0, length = labels.length; i &lt; length; i++) {
+            if (labels[i] === label) 
+                continue;
+            total += parseInt(docCount(labels[i]));
+        }
+        return total;
+    };
+    var increment = function (key) {
+        var count = parseInt(Bayes.storage.getItem(key));
+        if (!count) count = 0;
+        Bayes.storage.setItem(key, parseInt(count) + 1);
+        return count + 1;
+    };
+&nbsp;
+    var incrementStem = function (stem, label) {
+        increment(stemCountKey(stem));
+        increment(stemKey(stem, label));
+    };
+&nbsp;
+    var incrementDocCount = function (label) {
+        return increment(docCountKey(label));
+    };
+&nbsp;
+    Bayes.unigramTokenizer = function (text) {
+	    text = text.toLowerCase().replace(/'/g, '').replace(/\W/g, ' ').replace(/\s+/g, ' ').trim().split(' ');
+	    return text;
+    };
+&nbsp;
+    Bayes.bigramTokenizer = <span class="fstat-no" title="function not covered" >function (text) {</span>
+<span class="cstat-no" title="statement not covered" >	    text = Bayes.unigramTokenizer(text);</span>
+<span class="cstat-no" title="statement not covered" >	    var toks = [];</span>
+<span class="cstat-no" title="statement not covered" >	    for (var i = 0, len = text.length; i &lt; len-1; i++)</span>
+<span class="cstat-no" title="statement not covered" >		    toks.push(text.slice(i, i+2).join(' '));</span>
+<span class="cstat-no" title="statement not covered" >	    return toks;</span>
+    };
+&nbsp;
+    // Set the default tokenizer to unigramTokenizer
+    Bayes.tokenizer = Bayes.unigramTokenizer;
+    // Set the storage engine.
+    Bayes.storage = localStorage;
+&nbsp;
+    Bayes.train = function (text, label) {
+        registerLabel(label);
+        var words = Bayes.tokenizer(text);
+        var length = words.length;
+        for (var i = 0; i &lt; length; i++)
+            incrementStem(words[i], label);
+        incrementDocCount(label);
+    };
+&nbsp;
+    Bayes.guess = function (text) {
+        var words = Bayes.tokenizer(text);
+        var length = words.length;
+        var labels = getLabels();
+        var totalDocCount = 0;
+        var docCounts = {};
+        var docInverseCounts = {};
+        var scores = {};
+        var labelProbability = {};
+        
+        for (var j = 0; j &lt; labels.length; j++) {
+            var label = labels[j];
+            docCounts[label] = docCount(label);
+            docInverseCounts[label] = docInverseCount(label);
+            totalDocCount += parseInt(docCounts[label]);
+        }
+        
+        for (var j = 0; j &lt; labels.length; j++) {
+            var label = labels[j];
+            var logSum = 0;
+            labelProbability[label] = docCounts[label] / totalDocCount;
+           
+            for (var i = 0; i &lt; length; i++) {
+                var word = words[i];
+                var _stemTotalCount = stemTotalCount(word);
+                if (_stemTotalCount === 0) {
+                    continue;
+                } else {
+                    var wordProbability = stemLabelCount(word, label) / docCounts[label];
+                    var wordInverseProbability = stemInverseLabelCount(word, label) / docInverseCounts[label];
+                    var wordicity = wordProbability / (wordProbability + wordInverseProbability);
+		// Adjusted wordicity for rare words.
+		wordicity = ((3*0.5) + (_stemTotalCount*wordicity)) / (3 + _stemTotalCount);
+&nbsp;
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (wordicity === 0)
+<span class="cstat-no" title="statement not covered" >                        wordicity = 0.00001;</span>
+                    else <span class="missing-if-branch" title="if path not taken" >I</span>if (wordicity === 1)
+<span class="cstat-no" title="statement not covered" >                        wordicity = 0.99999;</span>
+               }
+                logSum += (Math.log(1 - wordicity) - Math.log(wordicity));
+                log(label + "icity of " + word + ": " + wordicity);
+            }
+            scores[label] = 1 / ( 1 + Math.exp(logSum) );
+        }
+        return scores;
+    };
+    
+    Bayes.extractWinner = function (scores) {
+        var bestScore = 0;
+        var bestLabel = null;
+        for (var label in scores) {
+            if (scores[label] &gt; bestScore) {
+                bestScore = scores[label];
+                bestLabel = label;
+            }
+        }
+        return {label: bestLabel, score: bestScore};
+    };
+&nbsp;
+    return Bayes;
+})(Bayes || {});</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jan 24 2019 19:42:22 GMT+0530 (IST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
