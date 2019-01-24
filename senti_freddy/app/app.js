@@ -38,7 +38,7 @@ $(document).ready( function() {
             client.request.get(agentTickets, options)
               .then(
                 function (data) {
-                  console.log(data);
+                  console.log(data.response);
                   // pass the ticket details to frontend
                 },
                 function (error) {
@@ -65,12 +65,10 @@ $(document).ready( function() {
                   data = JSON.parse(data.response)
                   for(i = 0 ; i < data.results.length ; i++){
                     resultScore = calculateScore(data.results[i].description_text);
-                    //setTicketStatus(data.results[i].id, client, domainDetail, resultScore);
-                  }
-                  //loop through the ticket list check for if custom field sentimental score is present don't have to proceed
-                  //calculate score too before calling
-                  //calback for new ticket
-                  
+                    if(data.results[i].custom_fields.cf_sentimental_score != resultScore){
+                      setTicketStatus(data.results[i].id, domainDetail, resultScore);
+                    }
+                  }  
                 },
                 function (error) {
                   notifyError();
@@ -82,40 +80,24 @@ $(document).ready( function() {
           }
         );
       }
-      function setTicketStatus (ticketId, client, domainDetail, score = "neutral") {
-
-            var data = JSON.stringify({
+      function setTicketStatus (ticketId, domainDetail, score = "Neutral") {
+            var data = {
               "custom_fields": {
-                "cf_sentimental_score": "negative"
+                "cf_sentimental_score": score
               }
-            });
-
-            var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-
-            xhr.addEventListener("readystatechange", function () {
-              if (this.readyState === 4) {
-                console.log(this.responseText);
-              }
-            });
-
-            xhr.open("PUT", "https://freshworksassist092.freshdesk.com/api/v2/tickets/16");
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("Authorization", "Basic Y3A5MVlRTTRTYVRsVTl2empJOnF3ZXJ0eTEyMzQ1Njc4");
-            xhr.setRequestHeader("Cache-Control", "no-cache");
-            xhr.setRequestHeader("Postman-Token", "86c006e4-15eb-4023-8de6-b16c430d7621");
-            xhr.send(data);
-  }
+            };
+            $.ajax({
+              url: 'https://' + domainDetail.domainName+'/api/v2/tickets/' + ticketId,
+              type: 'put',
+              data: JSON.stringify(data),
+              headers: {
+                  'Authorization': 'Basic Y3A5MVlRTTRTYVRsVTl2empJOnF3ZXJ0eTEyMzQ1Njc4',
+                  "Content-Type": "application/json"
+              },
+              dataType: 'json'
+            })
+      }
 });
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-
 
 var incorrectNegs = [];
 var incorrectPos = [];
