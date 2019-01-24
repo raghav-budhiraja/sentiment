@@ -4,3 +4,66 @@
   height: 25px;
   margin-top: 25px;
 }
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #F8F9F9;
+  margin: 10px 10px;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #F8F9F9;
+  margin: 10px 10px;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.ticket_count {
+	font-size: 50px;
+	margin: 50px 50px;
+}
+
+.Positive{
+	color: green;
+}
+
+.Neutral{
+	color: orange;
+}
+
+.Negative{
+	color: red;
+}
+
+.error{
+	visibility: hidden;
+}
+
+.main_content{
+	visibility: visible;
+}

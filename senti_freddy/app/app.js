@@ -40,13 +40,13 @@ $(document).ready( function() {
                   console.log(results);
                   if(results.total != 0){
                     for (i = 0; i < results.total; i++){
-                      $('#error').html();
-                      ticketurl = `https://${domainDetail.domainName}/a/tickets/${results.results[0].id}`;
-                      $('#suggested_ticket').html(`<a href= "${ticketurl}">${results.results[0].subject}</a>`);
+                      $('#error').html("");
+                      ticketurl = `https://${domainDetail.domainName}/a/tickets/${results.results[i].id}`;
+                      $('#suggested_ticket').append(`<p><a href= "${ticketurl}">${results.results[i].subject}</a></p>`);
                       $('a').attr('target','_blank');
                     }
                   }else {
-                    $('#suggested_ticket').html();
+                    $('#suggested_ticket').html("");
                     $('#error').html("<p>No ticket with negative reply.</p>");
                   }
                 },
@@ -71,12 +71,14 @@ $(document).ready( function() {
             client.request.get(agentTickets, options)
               .then(
                 function (data) {
-                  data = JSON.parse(data.response)
+                  data = JSON.parse(data.response);
+                  console.log(data);
                   for(i = 0 ; i < data.results.length ; i++){
                     resultScore = calculateScore(data.results[i].description_text);
-                    if(data.results[i].custom_fields.cf_sentimental_score != resultScore){
-                      setTicketStatus(data.results[i].id, domainDetail, resultScore);
-                    }
+                    console.log(resultScore);
+                    
+                    setTicketStatus(data.results[i].id, domainDetail, resultScore);
+                    
                   }  
                 },
                 function (error) {
@@ -90,6 +92,7 @@ $(document).ready( function() {
         );
       }
       function setTicketStatus (ticketId, domainDetail, score = "Neutral") {
+            console.log("hey"+score);
             var data = {
               "custom_fields": {
                 "cf_sentimental_score": score
@@ -192,9 +195,9 @@ function go() {
 function calculateScore(text) {
   var result = Bayes.extractWinner(Bayes.guess(text));
   percentage = Math.round(100*result.score)
-  if(percentage < 100 && percentage > 85){
+  if(percentage < 100){
     return "negative"
-  } else if (percentage > 65 && percentage < 85){
+  } else if (percentage > 55 && percentage < 65){
     return "neutral"
   } else {
     return "positive"

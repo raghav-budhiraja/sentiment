@@ -5,8 +5,47 @@
     <script src="report.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="https://static.freshdev.io/fdk/2.0/assets/freshdesk.css">
+    <link href="https://bootswatch.com/4/minty/bootstrap.min.css" rel="stylesheet">
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div id="agents_list"></div>
+  <div class="alert alert-dismissible alert-danger error">
+  </div>
+  <div class="main_content">
+    <div class="split left">
+      <div class="jumbotron">
+        <span class="ticket_count Positive">10</span>
+        <span class="ticket_count Neutral">20</span>
+        <span class="ticket_count Negative">25</span>
+      </div>
+      <div class="jumbotron">
+        <h2>Agents List</h2>
+        <table class="table table-hover" id="agent_table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email Id</th>
+              <th scope="col">Phone Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-active">
+            </tr>
+          </tbody>
+        </table> 
+      </div>
+
+
+    </div>
+
+    <div class="split right">
+      <div class="centered">
+        <h2>Select agent to check tickets.</h2>
+      </div>
+    </div>
+  </div>
+
   </body>
 </html>
