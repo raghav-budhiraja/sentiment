@@ -1,5 +1,3 @@
-
-
 $(document).ready( function() {
     app.initialized()
         .then(function(_client) {
@@ -9,7 +7,7 @@ $(document).ready( function() {
               fetchTicketsForAgent(data, client)
             },
             function(error) {
-              notifyError();
+              notifyError(error);
             }
             );
           client.events.on('app.activated',
@@ -19,13 +17,13 @@ $(document).ready( function() {
                     fetchSuggestedTicketsForAgent(data, client)
                   },
                   function(error) {
-                    notifyError();
+                    notifyError(error);
                   }
                 );
             });
         },
           function (error) {
-            notifyError();
+            notifyError(error);
           });
       function fetchSuggestedTicketsForAgent(agentPayload, client){
         client.data.get("domainName").then(
@@ -38,16 +36,27 @@ $(document).ready( function() {
             client.request.get(agentTickets, options)
               .then(
                 function (data) {
-                  console.log(data.response);
-                  // pass the ticket details to frontend
+                  results = JSON.parse(data.response);
+                  console.log(results);
+                  if(results.total != 0){
+                    for (i = 0; i < results.total; i++){
+                      $('#error').html();
+                      ticketurl = `https://${domainDetail.domainName}/a/tickets/${results.results[0].id}`;
+                      $('#suggested_ticket').html(`<a href= "${ticketurl}">${results.results[0].subject}</a>`);
+                      $('a').attr('target','_blank');
+                    }
+                  }else {
+                    $('#suggested_ticket').html();
+                    $('#error').html("<p>No ticket with negative reply.</p>");
+                  }
                 },
                 function (error) {
-                  notifyError();
+                  notifyError(error);
                 }
               );
           },
           function (error) {
-            notifyError();
+            notifyError(error);
           }
         );
       }
@@ -71,12 +80,12 @@ $(document).ready( function() {
                   }  
                 },
                 function (error) {
-                  notifyError();
+                  notifyError(error);
                 }
               );
           },
           function (error) {
-            notifyError();
+            notifyError(error);
           }
         );
       }
@@ -96,6 +105,10 @@ $(document).ready( function() {
               },
               dataType: 'json'
             })
+      }
+      function notifyError(error){
+        $('#suggested_ticket').html();
+        $('#error').html(error);
       }
 });
 
