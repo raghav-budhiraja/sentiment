@@ -29,7 +29,6 @@ $(document).ready( function() {
         client.data.get("domainName").then(
           function (domainDetail) {
             let agentTickets = `https://${domainDetail.domainName}/api/v2/search/tickets?query="agent_id:${agentPayload.loggedInUser.id} AND status:2 AND cf_sentimental_score: 'Negative'"`;
-
             let headers = { "Authorization": "Basic Y3A5MVlRTTRTYVRsVTl2empJOnF3ZXJ0eTEyMzQ1Njc4" };
             let options = { headers: headers };
 
@@ -92,7 +91,6 @@ $(document).ready( function() {
         );
       }
       function setTicketStatus (ticketId, domainDetail, score = "Neutral") {
-            console.log("hey"+score);
             var data = {
               "custom_fields": {
                 "cf_sentimental_score": score
@@ -195,12 +193,12 @@ function go() {
 function calculateScore(text) {
   var result = Bayes.extractWinner(Bayes.guess(text));
   percentage = Math.round(100*result.score)
-  if(percentage < 100){
-    return "negative"
-  } else if (percentage > 55 && percentage < 65){
-    return "neutral"
+  if(percentage < 100 && percentage > 85){
+    return "Negative"
+  } else if (percentage > 75 && percentage < 85){
+    return "Neutral"
   } else {
-    return "positive"
+    return "Positive"
   }
 }
 
